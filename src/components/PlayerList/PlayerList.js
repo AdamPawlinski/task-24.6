@@ -1,9 +1,9 @@
 import React from 'react';
 import Player from '../Player/Player';
-import './PlayersList.css';
+import './PlayerList.css';
 
-const PlayersList = (props) => (
-   <ul className="PlayersList">
+const PlayerList = (props) => (
+   <ul className="PlayerList">
        {props.players.map((player, i) => (
            <Player
                key={i}
@@ -15,4 +15,4 @@ const PlayersList = (props) => (
    </ul>
 );
 
-export default PlayersList;
+export default PlayerList;
