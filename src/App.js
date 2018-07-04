@@ -38,7 +38,7 @@ class App extends Component {
     })
   }
 
-  playerRemove = (playerIndex) => {
+  onPlayerRemove = (playerIndex) => {
     this.state.players.filter(
       (player, index) => {
         if (index !== playerIndex) {
@@ -51,7 +51,7 @@ class App extends Component {
     return (
       <div className="App">
         <AddPlayer onPlayerAdd={this.onPlayerAdd} />
-        <PlayerList players={this.state.players} onScoreUpdate={this.onScoreUpdate} onPlayerRemove={this.playerRemove}/>
+        <PlayerList players={this.state.players} onScoreUpdate={this.onScoreUpdate} onPlayerRemove={this.onPlayerRemove.bind(this)}/>
       </div>
     );
   }

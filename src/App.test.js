@@ -17,7 +17,7 @@ describe('App', () => {
             name: 'Kunegunda',
             score: 5,
           }
-        ]      
+        ]
       const appComponent = shallow(<App />);
       appComponent.setState({ players });
       const onScoreUpdate = appComponent.find(PlayerList).prop('onScoreUpdate');
@@ -36,6 +36,22 @@ describe('App', () => {
       expect(players.length).toEqual(1);
       expect(players[0].name).toEqual('Ania');
       expect(players[0].score).toEqual(0);
+    });
+  });
+  describe('remove Player', () => {
+    it('should remove player from the state', () => {
+      const players = [
+          {
+            name: 'Kunegunda',
+            score: 5,
+          }
+        ]
+      const appComponent = shallow(<App />);
+      appComponent.setState({ players });
+      const onPlayerRemove = appComponent.find(PlayerList).prop('onPlayerRemove');
+      onPlayerRemove(0);
+      const playersAfterUpdate = appComponent.state().players;
+      expect(players.length).toEqual(0);
     });
   });
 });

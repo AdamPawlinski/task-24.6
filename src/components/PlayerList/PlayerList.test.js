@@ -28,7 +28,7 @@ describe('Players List', () => {
     });
   });
     describe('updating score', () => {
-      it('should show 2 players on the list', () => {
+      it('should update score', () => {
         const players = [
             {
                 name: 'Kunegunda',
@@ -45,6 +45,26 @@ describe('Players List', () => {
         const onPlayerScoreChange = firstPlayer.prop('onPlayerScoreChange');
         onPlayerScoreChange(10);
         expect(mockedOnScoreUpdate).toBeCalledWith(0, 10);
+      });
+  });
+  describe('removing player', () => {
+    it('should remove player', () => {
+      const players = [
+          {
+              name: 'Kunegunda',
+              score: 5
+          },
+          {
+              name: 'Antoś',
+              score: 0
+          }
+      ]
+        const mockedOnPlayerRemove = jest.fn();
+        const playerComponent = shallow(<PlayerList players={players} onPlayerRemove={mockedOnPlayerRemove} />);
+        const firstPlayer = playerComponent.find(Player).first();
+        const onPlayerRemoveChange = firstPlayer.prop('playerRemove');
+        onPlayerRemoveChange(1);
+        expect(mockedOnPlayerRemove).toBeCalled();
       });
   });
 });

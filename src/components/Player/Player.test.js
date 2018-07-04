@@ -19,7 +19,7 @@ describe('Player', () => {
     });
   });
   describe('renders Player score', () => {
-    it('renders correct name', () => {
+    it('renders correct score', () => {
       const playerScorePassed = 23;
       const playerComponent = shallow(<Player score={playerScorePassed} />);
 
@@ -46,6 +46,15 @@ describe('Player', () => {
       const minusButton = playerComponent.find('.Player__button').last();
       minusButton.simulate('click');
       expect(mockedOnPlayerScoreChange).toBeCalledWith(-1);
+    });
+  });
+  describe('remove Player', () => {
+    it('should remove Player when clicked', () => {
+      const mockedOnPlayerRemove = jest.fn();
+      const playerComponent = shallow(<Player onPlayerRemove={mockedOnPlayerRemove} />);
+      const removeButton = playerComponent.find('.removePlayer__button');
+      removeButton.simulate('click');
+      expect(mockedOnPlayerRemove).toBeCalled();
     });
   });
 });
