@@ -17,8 +17,7 @@ describe('App', () => {
             name: 'Kunegunda',
             score: 5,
           }
-        ]
-      }
+        ]      
       const appComponent = shallow(<App />);
       appComponent.setState({ players });
       const onScoreUpdate = appComponent.find(PlayerList).prop('onScoreUpdate');

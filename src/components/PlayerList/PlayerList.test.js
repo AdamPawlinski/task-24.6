@@ -1,12 +1,12 @@
-import Player from './PlayerList';
-import Player from '../components/Player/Player';
+import PlayerList from './PlayerList';
+import Player from '../Player/Player';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 describe('Players List', () => {
   describe('renders correctly', () => {
     it('renders without crashing', () => {
-    shallow(<PlayersList players={[]} />);
+    shallow(<PlayerList players={[]} />);
     });
   });
   describe('showing players', () => {
@@ -21,7 +21,7 @@ describe('Players List', () => {
             score: 0
         }
       ]
-      const playerComponent = mount(<PlayersList players={players} />);
+      const playerComponent = mount(<PlayerList players={players} />);
       console.log(playerComponent.debug());
       const expectedPlayersNumber = playerComponent.find('Player').length;
       expect(expectedPlayersNumber).toEqual(2);
@@ -40,7 +40,7 @@ describe('Players List', () => {
             }
         ]
         const mockedOnScoreUpdate = jest.fn();
-        const playerComponent = shallow(<PlayersList players={players} onScoreUpdate={mockedOnScoreUpdate} />);
+        const playerComponent = shallow(<PlayerList players={players} onScoreUpdate={mockedOnScoreUpdate} />);
         const firstPlayer = playerComponent.find(Player).first();
         const onPlayerScoreChange = firstPlayer.prop('onPlayerScoreChange');
         onPlayerScoreChange(10);
